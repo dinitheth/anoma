@@ -111,7 +111,7 @@ defmodule Anoma.Node.Intents.Solver do
   end
 
   def handle_call(:disable, _from, state) do
-    state = %{state | enabled: not state.enabled}
+    state = %{state | enabled: false}
     {:reply, state.enabled, state}
   end
 
