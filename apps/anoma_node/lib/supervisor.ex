@@ -75,9 +75,14 @@ defmodule Anoma.Supervisor do
   """
   @spec stop_node(String.t()) :: :ok
   def stop_node(node_id) do
-    Anoma.Node.Registry.via(node_id, Anoma.Node.Supervisor)
+    case Anoma.Node.Registry.whereis(node_id, Anoma.Node.Supervisor) do
+      nil ->
+        :ok
 
-    Supervisor.stop(Anoma.Node.Registry.via(node_id, Anoma.Node.Supervisor))
+      pid when is_pid(pid) ->
+        Supervisor.stop(pid)
+        :ok
+    end
   end
 
   ############################################################
