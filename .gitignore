@@ -33,7 +33,6 @@ anoma-*.tar
 \#*\#
 
 # VSCode git ignore
-.vscode/
 
 # Mnesia disk-backed databases
 Mnesia*/
@@ -45,3 +44,5 @@ Mnesia*/
 *.pem
 .elixir_ls
 apps/anoma_client/anoma_client
+config.bat
+node_modules
